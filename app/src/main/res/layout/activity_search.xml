@@ -2,24 +2,25 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/constraintLayout"
+    android:id="@+id/constraintLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#33EAAE"
-    tools:context=".MainActivity">
+    tools:context=".SearchActivity">
 
     <EditText
-        android:id="@+id/search_bar"
+        android:id="@+id/search_bar1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:hint="Search"
         app:layout_constraintBottom_toTopOf="@+id/refereshner"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/refereshner"
+        android:id="@+id/refreshingLayout1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="100dp"
@@ -33,7 +34,7 @@
             android:layout_height="wrap_content">
 
             <ProgressBar
-                android:id="@+id/progress_bar"
+                android:id="@+id/progress_bar1"
                 style="?android:progressBarStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -41,7 +42,7 @@
                 android:layout_marginTop="60dp" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerViewForImages"
+                android:id="@+id/recyclerViewSearch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:visibility="visible"
@@ -50,22 +51,7 @@
                 app:layout_constraintHorizontal_bias="0.043"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.029">
-
-            </androidx.recyclerview.widget.RecyclerView>
-
-
+                app:layout_constraintVertical_bias="0.029" />
         </RelativeLayout>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Search"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

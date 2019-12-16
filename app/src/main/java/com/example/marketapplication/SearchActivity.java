@@ -1,26 +1,21 @@
-package com.example.marketapplication.ui.home;
+package com.example.marketapplication;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ProgressBar;
-
-import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import com.example.marketapplication.R;
-import com.example.marketapplication.SearchActivity;
+import android.os.Bundle;
+import android.os.Handler;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.ProgressBar;
+
+import com.example.marketapplication.ui.home.Images;
+import com.example.marketapplication.ui.home.RecyclerAdapter;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -32,37 +27,29 @@ import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 
-public class HomeFragment extends Fragment
+public class SearchActivity extends AppCompatActivity
 {
-
     private EditText editText;
     private ProgressBar progressBar;
     private RecyclerView recyclerView;
     private StorageReference storageReference;
     private DatabaseReference databaseReference;
     private RecyclerAdapter recyclerAdapter;
-    private Button searchButton;
     private ArrayList<Images> imagesArrayList;
     private SwipeRefreshLayout swipeRefreshLayout;
 
-
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState)
-    {
-        View root = inflater.inflate(R.layout.fragment_home, container, false);
-        return root;
-    }
-
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
+    protected void onCreate(Bundle savedInstanceState)
     {
-        super.onViewCreated(view, savedInstanceState);
-        progressBar = view.findViewById(R.id.progress_bar);
-        editText = view.findViewById(R.id.search_bar);
-        recyclerView = view.findViewById(R.id.recyclerViewForImages);
-        swipeRefreshLayout = view.findViewById(R.id.refereshner);
-        searchButton = view.findViewById(R.id.button2);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_search);
+
+        progressBar = findViewById(R.id.progress_bar1);
+        editText = findViewById(R.id.search_bar1);
+        recyclerView = findViewById(R.id.recyclerViewSearch);
+        swipeRefreshLayout = findViewById(R.id.refreshingLayout1);
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(SearchActivity.this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setHasFixedSize(true);
         databaseReference = FirebaseDatabase.getInstance().getReference();
@@ -70,17 +57,6 @@ public class HomeFragment extends Fragment
         imagesArrayList = new ArrayList<>();
         recyclerView.setVisibility(View.GONE);
         progressBar.setVisibility(View.VISIBLE);
-        searchButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                Intent i = new Intent(getActivity(), SearchActivity.class);
-//                i.putExtra("button", 1);
-                startActivity(i);
-
-            }
-        });
         init();
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener()
         {
@@ -98,8 +74,6 @@ public class HomeFragment extends Fragment
                 }, 3000);
             }
         });
-
-
     }
 
     private void init()
@@ -160,7 +134,7 @@ public class HomeFragment extends Fragment
 
     private void startRecyclerView()
     {
-        recyclerAdapter = new RecyclerAdapter(getActivity(), imagesArrayList);
+        recyclerAdapter = new RecyclerAdapter(SearchActivity.this, imagesArrayList);
         recyclerView.setAdapter(recyclerAdapter);
         recyclerAdapter.notifyDataSetChanged();
         recyclerView.setVisibility(View.VISIBLE);
