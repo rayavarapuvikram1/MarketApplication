@@ -50,8 +50,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             public void onClick(View v)
             {
                 Intent intent = new Intent(context, DetailedView.class);
-                intent.putExtra("delatiledImage",model.getUrl());
-                intent.putExtra("priceOfProduct",model.getPrice());
+                intent.putExtra("delatiledImage", model.getUrl());
+                intent.putExtra("priceOfProduct", model.getPrice());
                 context.startActivity(intent);
             }
         });
@@ -68,6 +68,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         RelativeLayout recyclerRelativeLayout;
         ImageView imageView;
         TextView textView;
+
         public ViewHolder(View view)
         {
             super(view);

@@ -27,6 +27,7 @@ public class DetailedView extends AppCompatActivity
     String url;
     Button buyButton;
     final int UPI_PAYMENT = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -36,7 +37,7 @@ public class DetailedView extends AppCompatActivity
         detailedImage = findViewById(R.id.delatiledImage);
         price = findViewById(R.id.priceOfProduct);
         price_of_product = getIntent().getStringExtra("priceOfProduct");
-        url= getIntent().getStringExtra("delatiledImage");
+        url = getIntent().getStringExtra("delatiledImage");
         price.setText(price_of_product);
         Picasso.get().load(url).into(detailedImage);
 
@@ -51,6 +52,7 @@ public class DetailedView extends AppCompatActivity
         });
 
     }
+
     // Payment Method
     void payUsingUpi(String name, String upiId, String note, String amount)
     {

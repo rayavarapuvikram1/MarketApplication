@@ -32,7 +32,7 @@ public class LauncherActivity extends AppCompatActivity
         password_element = findViewById(R.id.login_password);
         login_button = findViewById(R.id.login);
         sign_up_button = findViewById(R.id.sign_up);
-        firebaseAuth=FirebaseAuth.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
 
         authStateListener = new FirebaseAuth.AuthStateListener()
         {
@@ -76,7 +76,7 @@ public class LauncherActivity extends AppCompatActivity
                 }
                 else
                 {
-                    firebaseAuth.signInWithEmailAndPassword(email_idd,passwordd).addOnCompleteListener(LauncherActivity.this, new OnCompleteListener<AuthResult>()
+                    firebaseAuth.signInWithEmailAndPassword(email_idd, passwordd).addOnCompleteListener(LauncherActivity.this, new OnCompleteListener<AuthResult>()
                     {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task)
@@ -107,6 +107,7 @@ public class LauncherActivity extends AppCompatActivity
         });
 
     }
+
     @Override
     protected void onStart()
     {

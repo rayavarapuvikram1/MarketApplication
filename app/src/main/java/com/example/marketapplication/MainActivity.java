@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity
                 Intent i = new Intent(MainActivity.this, LauncherActivity.class);
                 startActivity(i);
             }
-                break;
+            break;
             case R.id.action_settings:
                 Toast.makeText(this, "under Construction", Toast.LENGTH_SHORT).show();
                 break;
