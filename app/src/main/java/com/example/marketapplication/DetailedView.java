@@ -1,7 +1,5 @@
 package com.example.marketapplication;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -15,18 +13,37 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 public class DetailedView extends AppCompatActivity
 {
+    final int UPI_PAYMENT = 0;
     ImageView detailedImage;
     TextView price;
     String price_of_product;
     String url;
     Button buyButton;
-    final int UPI_PAYMENT = 0;
+
+    //Internet Connectivity Check
+    public static boolean isConnectionAvailable(Context context)
+    {
+        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (connectivityManager != null)
+        {
+            NetworkInfo netInfo = connectivityManager.getActiveNetworkInfo();
+            if (netInfo != null && netInfo.isConnected()
+                    && netInfo.isConnectedOrConnecting()
+                    && netInfo.isAvailable())
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -174,23 +191,6 @@ public class DetailedView extends AppCompatActivity
             Log.e("UPI", "Internet issue: ");
             Toast.makeText(DetailedView.this, "Internet connection is not available. Please check and try again", Toast.LENGTH_SHORT).show();
         }
-    }
-
-    //Internet Connectivity Check
-    public static boolean isConnectionAvailable(Context context)
-    {
-        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        if (connectivityManager != null)
-        {
-            NetworkInfo netInfo = connectivityManager.getActiveNetworkInfo();
-            if (netInfo != null && netInfo.isConnected()
-                    && netInfo.isConnectedOrConnecting()
-                    && netInfo.isAvailable())
-            {
-                return true;
-            }
-        }
-        return false;
     }
 
 }
