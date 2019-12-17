@@ -43,12 +43,10 @@ public class SearchActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
-
         progressBar = findViewById(R.id.progress_bar1);
         editText = findViewById(R.id.search_bar1);
         recyclerView = findViewById(R.id.recyclerViewSearch);
         swipeRefreshLayout = findViewById(R.id.refreshingLayout1);
-
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(SearchActivity.this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setHasFixedSize(true);

@@ -41,10 +41,8 @@ public class HomeFragment extends Fragment
     private StorageReference storageReference;
     private DatabaseReference databaseReference;
     private RecyclerAdapter recyclerAdapter;
-    private Button searchButton;
     private ArrayList<Images> imagesArrayList;
     private SwipeRefreshLayout swipeRefreshLayout;
-
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState)
@@ -61,7 +59,6 @@ public class HomeFragment extends Fragment
         editText = view.findViewById(R.id.search_bar);
         recyclerView = view.findViewById(R.id.recyclerViewForImages);
         swipeRefreshLayout = view.findViewById(R.id.refereshner);
-        searchButton = view.findViewById(R.id.button2);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setHasFixedSize(true);
@@ -70,17 +67,8 @@ public class HomeFragment extends Fragment
         imagesArrayList = new ArrayList<>();
         recyclerView.setVisibility(View.GONE);
         progressBar.setVisibility(View.VISIBLE);
-        searchButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                Intent i = new Intent(getActivity(), SearchActivity.class);
-//                i.putExtra("button", 1);
-                startActivity(i);
 
-            }
-        });
+
         init();
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener()
         {
@@ -98,7 +86,15 @@ public class HomeFragment extends Fragment
                 }, 3000);
             }
         });
-
+        editText.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Intent i = new Intent(getActivity(), SearchActivity.class);
+                startActivity(i);
+            }
+        });
 
     }
 
@@ -118,36 +114,7 @@ public class HomeFragment extends Fragment
                     images.setPrice(dataSnapshot1.child("price").getValue().toString());
                     imagesArrayList.add(images);
                 }
-                editText.addTextChangedListener(new TextWatcher()
-                {
-                    @Override
-                    public void beforeTextChanged(CharSequence s, int start, int count, int after)
-                    {
-                    }
 
-                    @Override
-                    public void onTextChanged(CharSequence s, int start, int before, int count)
-                    {
-                    }
-
-                    @Override
-                    public void afterTextChanged(Editable s)
-                    {
-                        imagesArrayList = new ArrayList<>();
-                        for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren())
-                        {
-                            if (dataSnapshot1.child("price").getValue().toString().contains(s.toString()))
-                            {
-                                Images images = new Images();
-                                images.setUrl(dataSnapshot1.child("url").getValue().toString());
-                                images.setPrice(dataSnapshot1.child("price").getValue().toString());
-                                imagesArrayList.add(images);
-                                startRecyclerView();
-                            }
-
-                        }
-                    }
-                });
                 startRecyclerView();
             }
 
