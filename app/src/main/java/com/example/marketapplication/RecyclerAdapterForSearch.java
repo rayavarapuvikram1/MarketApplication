@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.marketapplication.ui.home.Images;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -19,9 +20,9 @@ import java.util.ArrayList;
 public class RecyclerAdapterForSearch extends RecyclerView.Adapter<RecyclerAdapterForSearch.ViewHolder>
 {
     private Context context;
-    private ArrayList<ImagesForSearch> imagesForSearchArrayListForRecycler;
+    private ArrayList<Images> imagesForSearchArrayListForRecycler;
 
-    public RecyclerAdapterForSearch(Context context, ArrayList<ImagesForSearch> imagesForSearchArrayListForRecycler)
+    public RecyclerAdapterForSearch(Context context, ArrayList<Images> imagesForSearchArrayListForRecycler)
     {
         this.context = context;
         this.imagesForSearchArrayListForRecycler = imagesForSearchArrayListForRecycler;
@@ -39,7 +40,7 @@ public class RecyclerAdapterForSearch extends RecyclerView.Adapter<RecyclerAdapt
     @Override
     public void onBindViewHolder(@NonNull RecyclerAdapterForSearch.ViewHolder holder, int position)
     {
-        final ImagesForSearch model = imagesForSearchArrayListForRecycler.get(position);
+        final Images model = imagesForSearchArrayListForRecycler.get(position);
         holder.textView.setText(imagesForSearchArrayListForRecycler.get(position).getPrice());
         Picasso.get().load(imagesForSearchArrayListForRecycler.get(position).getUrl()).into(holder.imageView);
         holder.recyclerRelativeLayout.setOnClickListener(new View.OnClickListener()
