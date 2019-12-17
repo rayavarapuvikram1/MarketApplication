@@ -14,8 +14,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 
-import com.example.marketapplication.ui.home.Images;
-import com.example.marketapplication.ui.home.RecyclerAdapter;
+import com.example.marketapplication.ImagesForSearch;
+import com.example.marketapplication.RecyclerAdapterForSearch;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -34,8 +34,8 @@ public class SearchActivity extends AppCompatActivity
     private RecyclerView recyclerView;
     private StorageReference storageReference;
     private DatabaseReference databaseReference;
-    private RecyclerAdapter recyclerAdapter;
-    private ArrayList<Images> imagesArrayList;
+    private RecyclerAdapterForSearch recyclerAdapter;
+    private ArrayList<ImagesForSearch> imagesArrayList;
     private SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
@@ -85,7 +85,7 @@ public class SearchActivity extends AppCompatActivity
             {
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren())
                 {
-                    Images images = new Images();
+                    ImagesForSearch images = new ImagesForSearch();
                     images.setUrl(dataSnapshot1.child("url").getValue().toString());
                     images.setPrice(dataSnapshot1.child("price").getValue().toString());
                     imagesArrayList.add(images);
@@ -110,7 +110,7 @@ public class SearchActivity extends AppCompatActivity
                         {
                             if (dataSnapshot1.child("price").getValue().toString().contains(s.toString()))
                             {
-                                Images images = new Images();
+                                ImagesForSearch images = new ImagesForSearch();
                                 images.setUrl(dataSnapshot1.child("url").getValue().toString());
                                 images.setPrice(dataSnapshot1.child("price").getValue().toString());
                                 imagesArrayList.add(images);
@@ -132,7 +132,7 @@ public class SearchActivity extends AppCompatActivity
 
     private void startRecyclerView()
     {
-        recyclerAdapter = new RecyclerAdapter(SearchActivity.this, imagesArrayList);
+        recyclerAdapter = new RecyclerAdapterForSearch(SearchActivity.this, imagesArrayList);
         recyclerView.setAdapter(recyclerAdapter);
         recyclerAdapter.notifyDataSetChanged();
         recyclerView.setVisibility(View.VISIBLE);
