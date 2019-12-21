@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -18,7 +19,8 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class LauncherActivity extends AppCompatActivity
 {
-    Button login_button, sign_up_button;
+    Button login_button;
+    TextView sign_up_button;
     FirebaseAuth firebaseAuth;
     EditText email_id_element, password_element;
     private FirebaseAuth.AuthStateListener authStateListener;
