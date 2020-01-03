@@ -3,13 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/detailed_view_background"
     tools:context=".DetailedView">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerInParent="true"
-        android:background="@drawable/mainpage"
         android:gravity="center"
         android:orientation="vertical">
 
