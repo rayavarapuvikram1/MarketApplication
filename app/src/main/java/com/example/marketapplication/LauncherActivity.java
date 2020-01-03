@@ -25,8 +25,23 @@ public class LauncherActivity extends AppCompatActivity
     TextView sign_up_button;
     FirebaseAuth firebaseAuth;
     ProgressDialog progressDialog;
-    TextInputEditText email_id_element;
-    TextInputEditText password_element;
+    TextInputEditText email_id_element,password_element;
+    /*
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:passwordToggleEnabled="true">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    // In gradle
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'com.android.support:design:28.0.0'
+    */
     private FirebaseAuth.AuthStateListener authStateListener;
 
     @Override

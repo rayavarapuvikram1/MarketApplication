@@ -67,8 +67,8 @@ public class SignupActivity extends AppCompatActivity
                         {
                             if (!task.isSuccessful())
                             {
-                                Toast.makeText(SignupActivity.this, "UNSUCCESSFUL", Toast.LENGTH_SHORT).show();
                                 progressDialog1.dismiss();
+                                Toast.makeText(SignupActivity.this, "UNSUCCESSFUL", Toast.LENGTH_SHORT).show();
                             }
                             else
                             {
