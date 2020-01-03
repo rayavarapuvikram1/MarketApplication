@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -20,7 +21,7 @@ public class SignupActivity extends AppCompatActivity
 {
     public FirebaseAuth firebaseAuth;
     Button sign_up_button;
-    EditText email_signup, password_signup;
+    TextInputEditText email_signup, password_signup;
     ProgressDialog progressDialog1;
 
     @Override
