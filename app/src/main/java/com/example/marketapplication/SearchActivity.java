@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
@@ -48,6 +49,8 @@ public class SearchActivity extends AppCompatActivity
         editText = findViewById(R.id.search_bar1);
         recyclerView = findViewById(R.id.recyclerViewSearch);
         swipeRefreshLayout = findViewById(R.id.refreshingLayout1);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(SearchActivity.this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setHasFixedSize(true);
@@ -153,4 +156,14 @@ public class SearchActivity extends AppCompatActivity
         imagesArrayList = new ArrayList<>();
     }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item)
+    {
+        int id = item.getItemId();
+        if (id == android.R.id.home)
+        {
+            this.finish();
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

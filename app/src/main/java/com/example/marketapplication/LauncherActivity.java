@@ -25,7 +25,7 @@ public class LauncherActivity extends AppCompatActivity
     TextView sign_up_button;
     FirebaseAuth firebaseAuth;
     ProgressDialog progressDialog;
-    TextInputEditText email_id_element,password_element;
+    TextInputEditText email_id_element, password_element;
     /*
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"

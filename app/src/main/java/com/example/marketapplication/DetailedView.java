@@ -7,6 +7,7 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -14,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.squareup.picasso.Picasso;
@@ -52,6 +54,8 @@ public class DetailedView extends AppCompatActivity
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_detailed_view);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         buyButton = findViewById(R.id.buyNow);
         detailedImage = findViewById(R.id.delatiledImage);
         price = findViewById(R.id.priceOfProduct);
@@ -195,4 +199,14 @@ public class DetailedView extends AppCompatActivity
         }
     }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item)
+    {
+        int id = item.getItemId();
+        if (id == android.R.id.home)
+        {
+            this.finish();
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

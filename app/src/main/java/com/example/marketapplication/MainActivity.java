@@ -75,6 +75,7 @@ public class MainActivity extends AppCompatActivity
                 Toast.makeText(MainActivity.this, "Signed Out", Toast.LENGTH_SHORT).show();
                 FirebaseAuth.getInstance().signOut();
                 Intent i = new Intent(MainActivity.this, LauncherActivity.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(i);
             }
             break;
@@ -92,4 +93,5 @@ public class MainActivity extends AppCompatActivity
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
 }

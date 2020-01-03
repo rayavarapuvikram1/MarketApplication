@@ -5,8 +5,8 @@
     android:id="@+id/constraintLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SearchActivity"
-    android:background="@drawable/search_background">
+    android:background="@drawable/search_background"
+    tools:context=".SearchActivity">
 
     <EditText
         android:id="@+id/search_bar1"
