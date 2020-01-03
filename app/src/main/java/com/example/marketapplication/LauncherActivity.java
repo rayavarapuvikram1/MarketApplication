@@ -1,5 +1,6 @@
 package com.example.marketapplication;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -23,6 +24,7 @@ public class LauncherActivity extends AppCompatActivity
     Button login_button;
     TextView sign_up_button;
     FirebaseAuth firebaseAuth;
+    ProgressDialog progressDialog;
     EditText email_id_element, password_element;
     private FirebaseAuth.AuthStateListener authStateListener;
 
@@ -36,6 +38,7 @@ public class LauncherActivity extends AppCompatActivity
         password_element = findViewById(R.id.login_password);
         login_button = findViewById(R.id.login);
         sign_up_button = findViewById(R.id.sign_up);
+        progressDialog = new ProgressDialog(this);
         firebaseAuth = FirebaseAuth.getInstance();
 
         authStateListener = new FirebaseAuth.AuthStateListener()
@@ -62,6 +65,8 @@ public class LauncherActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
+                progressDialog.setMessage("Logging In");
+                progressDialog.show();
                 String email_idd = email_id_element.getText().toString().trim();
                 String passwordd = password_element.getText().toString().trim();
                 if (email_idd.isEmpty() || passwordd.isEmpty())
@@ -87,11 +92,13 @@ public class LauncherActivity extends AppCompatActivity
                         {
                             if (!task.isSuccessful())
                             {
+                                progressDialog.dismiss();
                                 Toast.makeText(LauncherActivity.this, "UNSUCCESSFUL SIGN IN", Toast.LENGTH_SHORT).show();
                             }
                             else
                             {
                                 Toast.makeText(LauncherActivity.this, "SIGN IN Successfully", Toast.LENGTH_SHORT).show();
+                                progressDialog.dismiss();
                                 Intent i = new Intent(getApplicationContext(), MainActivity.class);
                                 startActivity(i);
                             }

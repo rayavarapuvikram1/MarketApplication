@@ -3,16 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DetailedView"
-    >
+    tools:context=".DetailedView">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerInParent="true"
+        android:background="@drawable/mainpage"
         android:gravity="center"
-        android:orientation="vertical"
-        android:background="@drawable/mainpage">
+        android:orientation="vertical">
 
         <ImageView
             android:id="@+id/delatiledImage"

@@ -1,5 +1,6 @@
 package com.example.marketapplication;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -20,7 +21,7 @@ public class SignupActivity extends AppCompatActivity
     public FirebaseAuth firebaseAuth;
     Button sign_up_button;
     EditText email_signup, password_signup;
-
+    ProgressDialog progressDialog1;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -30,11 +31,14 @@ public class SignupActivity extends AppCompatActivity
         sign_up_button = findViewById(R.id.signup_button);
         email_signup = findViewById(R.id.signup_email);
         password_signup = findViewById(R.id.signup_password);
+        progressDialog1 = new ProgressDialog(this);
         sign_up_button.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
+                progressDialog1.setMessage("Signing Up you");
+                progressDialog1.show();
                 String email_idd = email_signup.getText().toString().trim();
                 String passwordd = password_signup.getText().toString().trim();
                 if (email_idd.isEmpty() || passwordd.isEmpty())
@@ -61,11 +65,13 @@ public class SignupActivity extends AppCompatActivity
                             if (!task.isSuccessful())
                             {
                                 Toast.makeText(SignupActivity.this, "UNSUCCESSFUL", Toast.LENGTH_SHORT).show();
+                                progressDialog1.dismiss();
                             }
                             else
                             {
                                 Toast.makeText(SignupActivity.this, "Registered Successfully", Toast.LENGTH_SHORT).show();
                                 Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                                progressDialog1.dismiss();
                                 startActivity(i);
                             }
                         }
