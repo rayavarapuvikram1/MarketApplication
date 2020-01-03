@@ -22,6 +22,7 @@ public class SignupActivity extends AppCompatActivity
     Button sign_up_button;
     EditText email_signup, password_signup;
     ProgressDialog progressDialog1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -45,11 +46,13 @@ public class SignupActivity extends AppCompatActivity
                 {
                     if (email_idd.isEmpty())
                     {
+                        progressDialog1.dismiss();
                         email_signup.setError("Need Proper email");
                         email_signup.requestFocus();
                     }
                     else if (passwordd.isEmpty())
                     {
+                        progressDialog1.dismiss();
                         password_signup.setError("Need Proper Password");
                         password_signup.requestFocus();
                     }

@@ -24,38 +24,52 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.634" />
 
-    <EditText
-        android:id="@+id/login_email_id"
+
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="317dp"
-        android:layout_height="48dp"
-        android:background="@drawable/text_view_background"
-        android:ems="100"
-        android:fontFamily="@font/segoeui"
-        android:hint="Email"
-        android:inputType="textEmailAddress"
-        android:textColor="#FFFFFF"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.539"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.346" />
+        app:layout_constraintVertical_bias="0.346">
 
-    <EditText
-        android:id="@+id/login_password"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/login_email_id"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/text_view_background"
+            android:ems="10"
+            android:fontFamily="@font/segoeui"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:textColor="#FFFFFF"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="317dp"
-        android:layout_height="48dp"
-        android:background="@drawable/text_view_background"
-        android:ems="10"
-        android:fontFamily="@font/segoeui"
-        android:hint="Password"
-        android:inputType="textPassword"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.534"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.461" />
+        app:layout_constraintVertical_bias="0.461"
+        app:passwordToggleEnabled="true">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/login_password"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/text_view_background"
+            android:ems="10"
+            android:fontFamily="@font/segoeui"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:textColor="#FFFFFF"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
 
     <TextView
         android:id="@+id/textView3"

@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -25,7 +25,8 @@ public class LauncherActivity extends AppCompatActivity
     TextView sign_up_button;
     FirebaseAuth firebaseAuth;
     ProgressDialog progressDialog;
-    EditText email_id_element, password_element;
+    TextInputEditText email_id_element;
+    TextInputEditText password_element;
     private FirebaseAuth.AuthStateListener authStateListener;
 
     @Override
@@ -40,7 +41,6 @@ public class LauncherActivity extends AppCompatActivity
         sign_up_button = findViewById(R.id.sign_up);
         progressDialog = new ProgressDialog(this);
         firebaseAuth = FirebaseAuth.getInstance();
-
         authStateListener = new FirebaseAuth.AuthStateListener()
         {
             @Override
@@ -73,11 +73,13 @@ public class LauncherActivity extends AppCompatActivity
                 {
                     if (email_idd.isEmpty())
                     {
+                        progressDialog.dismiss();
                         email_id_element.setError("Need Proper email");
                         email_id_element.requestFocus();
                     }
                     else if (passwordd.isEmpty())
                     {
+                        progressDialog.dismiss();
                         password_element.setError("Need Proper Password");
                         password_element.requestFocus();
                     }
