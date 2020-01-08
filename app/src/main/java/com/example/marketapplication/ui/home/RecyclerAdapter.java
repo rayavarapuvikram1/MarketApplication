@@ -42,8 +42,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     public void onBindViewHolder(@NonNull RecyclerAdapter.ViewHolder holder, int position)
     {
         final Images model = imagesArrayListForRecycler.get(position);
-        holder.textView.setText(imagesArrayListForRecycler.get(position).getPrice());
-        Picasso.get().load(imagesArrayListForRecycler.get(position).getUrl()).into(holder.imageView);
+        holder.textView.setText(model.getPrice());
+        Picasso.get().load(model.getUrl()).into(holder.imageView);
         holder.recyclerRelativeLayout.setOnClickListener(new View.OnClickListener()
         {
             @Override

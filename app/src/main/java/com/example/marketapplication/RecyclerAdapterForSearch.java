@@ -41,8 +41,8 @@ public class RecyclerAdapterForSearch extends RecyclerView.Adapter<RecyclerAdapt
     public void onBindViewHolder(@NonNull RecyclerAdapterForSearch.ViewHolder holder, int position)
     {
         final Images model = imagesForSearchArrayListForRecycler.get(position);
-        holder.textView.setText(imagesForSearchArrayListForRecycler.get(position).getPrice());
-        Picasso.get().load(imagesForSearchArrayListForRecycler.get(position).getUrl()).into(holder.imageView);
+        holder.textView.setText(model.getPrice());
+        Picasso.get().load(model.getUrl()).into(holder.imageView);
         holder.recyclerRelativeLayout.setOnClickListener(new View.OnClickListener()
         {
             @Override
