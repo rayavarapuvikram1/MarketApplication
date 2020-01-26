@@ -26,6 +26,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.smarteist.autoimageslider.SliderView;
 
 import java.util.ArrayList;
 
@@ -34,10 +35,12 @@ public class HomeFragment extends Fragment
 
     private EditText editText;
     private ProgressBar progressBar;
-    private RecyclerView recyclerView;
+
+    private SliderView recyclerView;
+    private SliderAdapterExample recyclerAdapter;
+
     private StorageReference storageReference;
     private DatabaseReference databaseReference;
-    private RecyclerAdapter recyclerAdapter;
     private ArrayList<Images> imagesArrayList;
     private SwipeRefreshLayout swipeRefreshLayout;
 
@@ -56,17 +59,18 @@ public class HomeFragment extends Fragment
         editText = view.findViewById(R.id.search_bar);
         recyclerView = view.findViewById(R.id.recyclerViewForImages);
         swipeRefreshLayout = view.findViewById(R.id.refereshner);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
-        recyclerView.setLayoutManager(linearLayoutManager);
-        recyclerView.setHasFixedSize(true);
         databaseReference = FirebaseDatabase.getInstance().getReference();
         storageReference = FirebaseStorage.getInstance().getReference();
+
         imagesArrayList = new ArrayList<>();
+
         recyclerView.setVisibility(View.GONE);
+
         progressBar.setVisibility(View.VISIBLE);
 
 
         init();
+
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener()
         {
             @Override
@@ -124,8 +128,8 @@ public class HomeFragment extends Fragment
 
     private void startRecyclerView()
     {
-        recyclerAdapter = new RecyclerAdapter(getActivity(), imagesArrayList);
-        recyclerView.setAdapter(recyclerAdapter);
+        recyclerAdapter = new SliderAdapterExample(getActivity(), imagesArrayList);
+        recyclerView.setSliderAdapter(recyclerAdapter);
         recyclerAdapter.notifyDataSetChanged();
         recyclerView.setVisibility(View.VISIBLE);
         progressBar.setVisibility(View.GONE);
