@@ -57,7 +57,7 @@ public class SliderAdapterExample extends SliderViewAdapter<SliderAdapterExample
                 context.startActivity(intent);
             }
         });
-            }
+    }
 
     @Override
     public int getCount()

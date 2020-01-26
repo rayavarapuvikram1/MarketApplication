@@ -1,6 +1,7 @@
 package com.example.marketapplication.ui.home;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -12,8 +13,6 @@ import android.widget.ProgressBar;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.marketapplication.R;
@@ -26,6 +25,8 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.smarteist.autoimageslider.IndicatorAnimations;
+import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderView;
 
 import java.util.ArrayList;
@@ -130,6 +131,13 @@ public class HomeFragment extends Fragment
     {
         recyclerAdapter = new SliderAdapterExample(getActivity(), imagesArrayList);
         recyclerView.setSliderAdapter(recyclerAdapter);
+        recyclerView.setIndicatorAnimation(IndicatorAnimations.WORM); //set indicator animation by using SliderLayout.IndicatorAnimations. :WORM or THIN_WORM or COLOR or DROP or FILL or NONE or SCALE or SCALE_DOWN or SLIDE and SWAP!!
+        recyclerView.setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION);
+        recyclerView.setAutoCycleDirection(SliderView.AUTO_CYCLE_DIRECTION_RIGHT);
+        recyclerView.setIndicatorSelectedColor(Color.WHITE);
+        recyclerView.setIndicatorUnselectedColor(Color.GRAY);
+        recyclerView.setScrollTimeInSec(2);
+        recyclerView.startAutoCycle();
         recyclerAdapter.notifyDataSetChanged();
         recyclerView.setVisibility(View.VISIBLE);
         progressBar.setVisibility(View.GONE);
